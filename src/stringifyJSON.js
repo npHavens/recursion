@@ -5,18 +5,34 @@
 
 var stringifyJSON = function(obj) {
   //instantiate variable to hold data type of obj
+  var type =  typeof obj;
   //BASE CASE: if data type is string, return obj
+  if (type === 'string') {
+  	return obj;
+  }
 
   //if data type is number, return obj.toString()
+  if (type === 'number') {
+  	return obj.toString();
+  }
 
   //if data type is array, iterate over elements of obj
+  if (Array.isArray(obj)) {
     //instantiate var stringifiedArray '['
+    var stringifiedArray = '[';
     //for each element
-      //stringifiedArray.concat(stringifyJSON(element) + ',')
-    //return stringifiedArray.concat(']')
+    obj.forEach(function(element) {
+      stringifiedArray.concat(stringifyJSON(element) + ',');
+    });
+    return stringifiedArray.concat(']');
+  }
 
   //else iterate over properties of obj
-    //instantiate var stringifiedObj '{'
+  //instantiate var stringifiedObj '{'
+  var stringifiedObj = '{';
+  for (var prop in obj) {
     //for each prop
-      //stringifiedObj.concat(prop + ':' + stringifyJSON(obj[prop]) + ',')
+    stringifiedObj.concat(prop + ':' + stringifyJSON(obj[prop]) + ',');
+  }
+  return stringifiedObj.concat('}');
 };
