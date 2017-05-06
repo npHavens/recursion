@@ -43,8 +43,10 @@ var stringifyJSON = function(obj) {
 
   for (var key in obj) {
     //for each prop
-    stringifiedObj += stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + (counter < keys.length - 1 ? ',' : '');
-    counter++;
+    if (stringifyJSON(obj[key])) {
+      stringifiedObj += stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + (counter < keys.length - 1 ? ',' : '');
+      counter++;
+    }
   }
   return stringifiedObj.concat('}');
 };
