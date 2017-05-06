@@ -11,6 +11,10 @@ var stringifyJSON = function(obj) {
 
   var type =  typeof obj;
 
+  if (obj === undefined || type === 'function') {
+  	return;
+  }
+
   //BASE CASE: if data type is string, return obj
   if (type === 'string') {
   	return '"' + obj + '"';
@@ -34,9 +38,13 @@ var stringifyJSON = function(obj) {
   //else iterate over properties of obj
   //instantiate var stringifiedObj '{'
   var stringifiedObj = '{';
-  for (var prop in obj) {
+  var keys = Object.keys(obj);
+  var counter = 0;
+
+  for (var key in obj) {
     //for each prop
-    stringifiedObj += prop + ':' + stringifyJSON(obj[prop]) + ',';
+    stringifiedObj += stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + (counter < keys.length - 1 ? ',' : '');
+    counter++;
   }
   return stringifiedObj.concat('}');
 };
