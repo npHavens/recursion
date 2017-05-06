@@ -13,9 +13,8 @@ var stringifyJSON = function(obj) {
 
   //BASE CASE: if data type is string, return obj
   if (type === 'string') {
-  	return obj;
+  	return '"' + obj + '"';
   }
-
   //if data type is number, return obj.toString()
   if (type === 'number' || type === 'boolean') {
   	return obj.toString();
