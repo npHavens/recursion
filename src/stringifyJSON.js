@@ -7,7 +7,7 @@ var stringifyJSON = function(obj) {
   //instantiate variable to hold data type of obj
   var type =  typeof obj;
   //BASE CASE: if data type is string, return obj
-  if (type === 'string') {
+  if (type === 'string' || type === null) {
   	return obj;
   }
 
