@@ -5,11 +5,11 @@
 
 var stringifyJSON = function(obj) {
   //instantiate variable to hold data type of obj
-  var type =  typeof obj;
-
   if (obj === null) {
   	return 'null';
   }
+
+  var type =  typeof obj;
 
   //BASE CASE: if data type is string, return obj
   if (type === 'string') {
@@ -17,7 +17,7 @@ var stringifyJSON = function(obj) {
   }
 
   //if data type is number, return obj.toString()
-  if (type === 'number') {
+  if (type === 'number' || type === 'boolean') {
   	return obj.toString();
   }
 
