@@ -25,8 +25,8 @@ var stringifyJSON = function(obj) {
     //instantiate var stringifiedArray '['
     var stringifiedArray = '[';
     //for each element
-    obj.forEach(function(element) {
-      stringifiedArray += stringifyJSON(element) + ',';
+    obj.forEach(function(element, i) {
+      stringifiedArray += stringifyJSON(element) + (i < obj.length - 1 ? ',' : '');
     });
     return stringifiedArray.concat(']');
   }
