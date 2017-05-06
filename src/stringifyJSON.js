@@ -26,7 +26,7 @@ var stringifyJSON = function(obj) {
     var stringifiedArray = '[';
     //for each element
     obj.forEach(function(element) {
-      stringifiedArray.concat(stringifyJSON(element) + ',');
+      stringifiedArray += stringifyJSON(element) + ',';
     });
     return stringifiedArray.concat(']');
   }
@@ -36,7 +36,7 @@ var stringifyJSON = function(obj) {
   var stringifiedObj = '{';
   for (var prop in obj) {
     //for each prop
-    stringifiedObj.concat(prop + ':' + stringifyJSON(obj[prop]) + ',');
+    stringifiedObj += prop + ':' + stringifyJSON(obj[prop]) + ',';
   }
   return stringifiedObj.concat('}');
 };
