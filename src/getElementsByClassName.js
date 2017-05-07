@@ -6,18 +6,20 @@
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className
 ) {
-  //instantiate empty array as result
-console.log(document.body)
-  //instantiate var element = document.body
+  //instantiate empty array for results
+  var matchedElements = [];
+  //instantiate variable for current element
+  var node = this;
+
+  //define function for checking if element has className
+    //instantiate variable for classList
+    //iterate through class list and push element to matchedElements if there is a match
+
+  //BASE CASE: if node.childNodes.length === 0, return matched elements
   
-  //instantiate classlist array of element
-
-  //iterate over classlist array
-    //if className = classList[i], push element to result array
-
-  //BASE CASE: if element.childNodes.length === 0, return array
-
-  //else iterate over element.childnodes
-    //result = result.concat(getElementsByClassName(childElement))
+  //else iterate over node.childNodes
+    //matchedElements = matchedElements.concat(getElementsByClassName.call(node.childNodes[i], className))
+ 
+ //return matched elements
 
 };
