@@ -11,7 +11,6 @@ var getElementsByClassName = function(className) {
   var body = document.body;
   //define function iterateNodes(node) to iterate over body
   var iterateNode = function(node) {
-  	console.log(node);
     if (node.classList && node.classList.contains(className)) {
       matchedElements.push(node);
     }
@@ -22,9 +21,6 @@ var getElementsByClassName = function(className) {
         iterateNode(node.childNodes[i]);
       }
     }
-    // } else {//BASE CASE: else stop iteration
-    //   return;
-    // }
   }
   iterateNode(body);
   return matchedElements;
