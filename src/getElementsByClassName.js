@@ -6,20 +6,28 @@
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className) {
   //instantiate empty array for results
-  
+  var matchedElements = [];
   //instantiate var body
+  var body = document.body;
 
   //define function iterateNodes(node) to iterate over body
-    //var node = current element
-    //if node.classList.contains(className)
-      //results.push(node)
-    //if node.childNodes
+  var iterateNode = function(node) {
+    if (node.classList.contains(className)) {
+      matchedElements.push(node);
+    }
+    if (node.childNodes) {
       //iterate over childNodes
         //for each childNode
-          //iterateNode(childNode)
-    //BASE CASE: else return results
+        for (var i = 0; i < node.childNodes.length; i++) {
+          iterateNode(node.childNodes[i]);
+        }
+    } else {//BASE CASE: else return results
+      return matchedElements;
+    }
 
-  //iterateNodes(body)
+  }
 
-  //return results
+  iterateNodes(body)
+
+  return matchedElements;
 };
