@@ -9,25 +9,21 @@ var getElementsByClassName = function(className) {
   var matchedElements = [];
   //instantiate var body
   var body = document.body;
-
   //define function iterateNodes(node) to iterate over body
   var iterateNode = function(node) {
-    if (node.classList.contains(className)) {
+    if (node.classList && node.classList.contains(className)) {
       matchedElements.push(node);
     }
     if (node.childNodes) {
       //iterate over childNodes
         //for each childNode
-        for (var i = 0; i < node.childNodes.length; i++) {
-          iterateNode(node.childNodes[i]);
-        }
-    } else {//BASE CASE: else return results
-      return matchedElements;
+      for (var i = 0; i < node.childNodes.length; i++) {
+        iterateNode(node.childNodes[i]);
+      }
+    } else {//BASE CASE: else stop iteration
+      return;
     }
-
   }
-
-  iterateNodes(body)
-
+  iterateNode(body);
   return matchedElements;
 };
